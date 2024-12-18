@@ -308,6 +308,14 @@ FodyWeavers.xsd
 *.sln.iml
 
 
+# Rider
+bin/
+obj/
+/packages/
+riderModule.iml
+/_ReSharper.Caches/
+
+
 # CMake
 CMakeLists.txt.user
 CMakeCache.txt
