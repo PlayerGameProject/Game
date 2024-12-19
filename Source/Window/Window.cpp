@@ -8,6 +8,14 @@ Window::Window(unsigned int width, unsigned int height, std::string title)
         throw std::runtime_error("Failed to initialize window library");
 
     glfwDefaultWindowHints();
+    glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_API);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
+    glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
+    glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
+#ifdef __APPLE__
+    glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
+#endif
+    glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
 
     this->width = width;
     this->height = height;
@@ -27,12 +35,16 @@ Window::Window(unsigned int width, unsigned int height, std::string title)
         glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
 
     SetCenter(window);
+
+    glfwShowWindow(window);
 }
 
 void Window::Run()
 {
     glfwSwapBuffers(window);
     glfwPollEvents();
+
+    SetViewport();
 
     KeyInput();
 }

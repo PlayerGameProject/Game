@@ -6,14 +6,13 @@ int main(int argc, char** argv)
     {
         App Game(640u, 480u, "Game");
         Game.Run();
-        Game.~App();
-
-        return EXIT_SUCCESS;
     }
-    catch (std::runtime_error& error)
+    catch (const std::runtime_error& error)
     {
-        std::cout << "[Error] Failed to run the program: " << error.what() << std::endl;
+        std::cerr << "[Error] Failed to run the program: " << error.what() << std::endl;
 
         return EXIT_FAILURE;
     }
+    
+    return EXIT_SUCCESS;
 }

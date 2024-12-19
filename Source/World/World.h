@@ -15,7 +15,7 @@
 class World
 {
 private:
-    std::optional<Mesh> Block; // Late-initialize the Mesh class
+    std::optional<Mesh> Block;
     
 public:
     World();

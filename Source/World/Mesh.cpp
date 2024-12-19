@@ -41,8 +41,4 @@ void Mesh::Render()
 
 Mesh::~Mesh()
 {
-    VAO.~VAO();
-    VBO.~VBO();
-    EBO.~EBO();
-    Shader.~Shader();
 }

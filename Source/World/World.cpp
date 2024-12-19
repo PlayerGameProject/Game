@@ -20,5 +20,4 @@ void World::Run()
 
 World::~World()
 {
-    Block->~Mesh();
 }

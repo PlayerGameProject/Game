@@ -10,13 +10,10 @@ void App::Run()
     {
         World.Run();
         Window.Run();
-        Window.SetViewport();
     }
 }
 
 App::~App()
 {
-    World.~World();
-    Window.~Window();
 }
 
