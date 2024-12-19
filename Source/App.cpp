@@ -1,6 +1,6 @@
 #include "App.h"
 
-App::App(unsigned int width, unsigned int height, std::string title) : Window(width, height, title)
+App::App(unsigned int width, unsigned int height, const std::string& title) : Window(width, height, title)
 {
 }
 

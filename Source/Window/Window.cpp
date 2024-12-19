@@ -1,6 +1,6 @@
 #include "Window.h"
 
-Window::Window(unsigned int width, unsigned int height, std::string title)
+Window::Window(unsigned int width, unsigned int height, const std::string& title)
 {
     glfwInit();
 
@@ -89,31 +89,31 @@ void Window::SetCenter(GLFWwindow* window)
     windowX += windowWidth;
     windowY += windowHeight;
 
-    int monitorsLen;
-    GLFWmonitor** monitors = glfwGetMonitors(&monitorsLen);
-    if (monitors == NULL)
+    int monitorsLength;
+    GLFWmonitor** monitors = glfwGetMonitors(&monitorsLength);
+    if (monitors == nullptr)
     {
         return;
     }
 
-    GLFWmonitor* monitor = NULL;
+    GLFWmonitor* monitor = nullptr;
     int monitorX, monitorY, monitorWidth, monitorHeight;
 
-    for (int i = 0; i < monitorsLen; i++)
+    for (int i = 0; i < monitorsLength; i++)
     {
         int monitorsX, monitorsY;
         glfwGetMonitorPos(monitors[i], &monitorsX, &monitorsY);
 
         int monitorsWidth, monitorsHeight;
-        GLFWvidmode* monitorVidmode = (GLFWvidmode*)glfwGetVideoMode(monitors[i]);
-        if (monitorVidmode == NULL)
+        GLFWvidmode* monitorVideoMode = (GLFWvidmode*)glfwGetVideoMode(monitors[i]);
+        if (monitorVideoMode == nullptr)
         {
             continue;
         }
         else
         {
-            monitorsWidth = monitorVidmode->width;
-            monitorsHeight = monitorVidmode->height;
+            monitorsWidth = monitorVideoMode->width;
+            monitorsHeight = monitorVideoMode->height;
         }
 
         if ((windowX > monitorsX && windowX < (monitorsX + monitorsWidth)) && (windowY > monitorsY && windowY < (monitorsY + monitorsHeight)))
@@ -128,7 +128,7 @@ void Window::SetCenter(GLFWwindow* window)
         }
     }
 
-    if (monitor != NULL)
+    if (monitor != nullptr)
     {
         glfwSetWindowPos(window, monitorX + (monitorWidth * 0.5) - windowWidth, monitorY + (monitorHeight * 0.5) - windowHeight);
     }
@@ -136,7 +136,7 @@ void Window::SetCenter(GLFWwindow* window)
 
 void Window::Fullscreen(GLFWwindow* window)
 {
-    if (glfwGetWindowMonitor(window) == NULL)
+    if (glfwGetWindowMonitor(window) == nullptr)
     {
         GLFWmonitor* primaryMonitor = glfwGetPrimaryMonitor();
         const GLFWvidmode* mode = glfwGetVideoMode(primaryMonitor);
@@ -147,7 +147,7 @@ void Window::Fullscreen(GLFWwindow* window)
     }
     else
     {
-        glfwSetWindowMonitor(window, NULL, 0, 0, width, height, 0);
+        glfwSetWindowMonitor(window, nullptr, 0, 0, width, height, 0);
 
         SetCenter(window);
 

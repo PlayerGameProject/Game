@@ -20,7 +20,7 @@ private:
     GLFWwindow* window;
     
 public:
-    Window(unsigned int width, unsigned int height, std::string title);
+    Window(unsigned int width, unsigned int height, const std::string& title);
     void Run();
     void SetViewport();
     bool ShouldClose() const;

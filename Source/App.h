@@ -16,7 +16,7 @@ private:
     World World;
     
 public:
-    App(unsigned int width, unsigned int height, std::string title);
+    App(unsigned int width, unsigned int height, const std::string& title);
     void Run();
     virtual ~App();
 };
