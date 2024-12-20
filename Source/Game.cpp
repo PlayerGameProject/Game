@@ -9,7 +9,7 @@ int main(int argc, char** argv)
     }
     catch (const std::runtime_error& error)
     {
-        std::cerr << "[Error] Failed to run the program: " << error.what() << std::endl;
+        std::cerr << "[Error] Failed to run the program: " << error.what() << "\n";
 
         return EXIT_FAILURE;
     }

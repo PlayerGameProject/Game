@@ -18,7 +18,7 @@ private:
 public:
     App(unsigned int width, unsigned int height, const std::string& title);
     void Run();
-    virtual ~App();
+    virtual ~App() = default;
 };
 
 #endif

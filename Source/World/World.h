@@ -11,16 +11,18 @@
 #include <GLFW/glfw3.h>
 
 #include "Mesh.h"
+#include "../Camera/Camera.h"
 
 class World
 {
 private:
     std::optional<Mesh> Block;
+    std::optional<Camera> Camera;
     
 public:
-    World();
-    void Run();
-    ~World();
+    World(GLFWwindow* window);
+    void Run(GLFWwindow* window);
+    ~World() = default;
 };
 
 #endif

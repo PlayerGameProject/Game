@@ -1,6 +1,6 @@
 #include "Window.h"
 
-Window::Window(unsigned int width, unsigned int height, const std::string& title)
+Window::Window(unsigned int width, unsigned int height, const std::string& title) : width(width), height(height), title(title)
 {
     glfwInit();
 
@@ -16,12 +16,8 @@ Window::Window(unsigned int width, unsigned int height, const std::string& title
     glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GLFW_TRUE);
 #endif
     glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
-
-    this->width = width;
-    this->height = height;
-    this->title = title;
     
-    window = glfwCreateWindow(width, height, title.c_str(), nullptr, nullptr);
+    window = glfwCreateWindow(static_cast<int>(width), static_cast<int>(height), title.c_str(), nullptr, nullptr);
     if (!window)
         throw std::runtime_error("Failed to create window");
 
@@ -92,9 +88,7 @@ void Window::SetCenter(GLFWwindow* window)
     int monitorsLength;
     GLFWmonitor** monitors = glfwGetMonitors(&monitorsLength);
     if (monitors == nullptr)
-    {
         return;
-    }
 
     GLFWmonitor* monitor = nullptr;
     int monitorX, monitorY, monitorWidth, monitorHeight;
@@ -107,9 +101,7 @@ void Window::SetCenter(GLFWwindow* window)
         int monitorsWidth, monitorsHeight;
         GLFWvidmode* monitorVideoMode = (GLFWvidmode*)glfwGetVideoMode(monitors[i]);
         if (monitorVideoMode == nullptr)
-        {
             continue;
-        }
         else
         {
             monitorsWidth = monitorVideoMode->width;
@@ -129,9 +121,7 @@ void Window::SetCenter(GLFWwindow* window)
     }
 
     if (monitor != nullptr)
-    {
         glfwSetWindowPos(window, monitorX + (monitorWidth * 0.5) - windowWidth, monitorY + (monitorHeight * 0.5) - windowHeight);
-    }
 }
 
 void Window::Fullscreen(GLFWwindow* window)
