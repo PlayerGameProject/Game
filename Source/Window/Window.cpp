@@ -1,6 +1,8 @@
 #include "Window.h"
 
-Window::Window(unsigned int width, unsigned int height, const std::string& title) : width(width), height(height), title(title)
+#include <dinput.h>
+
+Window::Window(unsigned int width, unsigned int height, const std::string& title, const std::string& icon, bool vSync) : width(width), height(height), title(title)
 {
     glfwInit();
 
@@ -21,11 +23,19 @@ Window::Window(unsigned int width, unsigned int height, const std::string& title
     if (!window)
         throw std::runtime_error("Failed to create window");
 
+    if (!icon.empty())
+    {
+        if (!Icon(icon, window))
+        {
+            std::cout << "[Warn] Failed to load icon, operating system default will be used"<< std::endl;
+        }
+    }
+
     glfwMakeContextCurrent(window);
 
     glfwSetWindowUserPointer(window, this);
 
-    glfwSwapInterval(1);
+    glfwSwapInterval(vSync);
 
     if (glfwRawMouseMotionSupported())
         glfwSetInputMode(window, GLFW_RAW_MOUSE_MOTION, GLFW_TRUE);
@@ -61,6 +71,24 @@ bool Window::ShouldClose() const
 GLFWwindow* Window::GetWindow() const
 {
     return this->window;
+}
+
+bool Window::Icon(const std::string& path, GLFWwindow* window)
+{
+    int width, height, channels;
+    unsigned char* image = stbi_load(path.c_str(), &width, &height, &channels, 4);
+
+    if (image == nullptr)
+        return false;
+
+    GLFWimage icon;
+    icon.width = width;
+    icon.height = height;
+    icon.pixels = image;
+
+    glfwSetWindowIcon(window, 1, &icon);
+    stbi_image_free(image);
+    return true;
 }
 
 void Window::KeyInput()

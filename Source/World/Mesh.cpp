@@ -105,7 +105,6 @@ void Mesh::Render()
     Shader.Activate();
     Texture.Bind();
     VAO.Bind();
-    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 	for (int i = 0; i < sizeof(texture); i++)
 	{

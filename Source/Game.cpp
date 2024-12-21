@@ -4,7 +4,7 @@ int main(int argc, char** argv)
 {
     try
     {
-        App Game(640u, 480u, "Game");
+        App Game(640u, 480u, "Game", std::string(ProjectDirectory "/Resource/Image/Block.png"), false);
         Game.Run();
     }
     catch (const std::runtime_error& error)

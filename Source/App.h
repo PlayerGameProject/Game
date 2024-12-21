@@ -16,9 +16,9 @@ private:
     World World;
     
 public:
-    App(unsigned int width, unsigned int height, const std::string& title);
+    App(unsigned int width, unsigned int height, const std::string& title, const std::string& icon, bool vSync);
     void Run();
-    virtual ~App() = default;
+    virtual ~App();
 };
 
 #endif

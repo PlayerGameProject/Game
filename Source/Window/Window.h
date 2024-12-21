@@ -11,6 +11,7 @@
 
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <stb/stb_image.h>
 
 class Window
 {
@@ -20,7 +21,7 @@ private:
     GLFWwindow* window;
     
 public:
-    Window(unsigned int width, unsigned int height, const std::string& title);
+    Window(unsigned int width, unsigned int height, const std::string& title, const std::string& icon, bool vSync);
     void Run();
     void SetViewport();
     bool ShouldClose() const;
@@ -29,6 +30,7 @@ public:
     ~Window();
     
 private:
+    bool Icon(const std::string& path, GLFWwindow* window);
     void KeyInput();
     void SetCenter(GLFWwindow* window);
     void Fullscreen(GLFWwindow* window);
