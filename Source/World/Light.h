@@ -1,7 +1,7 @@
 #pragma once
 
-#ifndef MESH_H
-#define MESH_H
+#ifndef LIGHT_H
+#define LIGHT_H
 
 #include <glad/glad.h>
 
@@ -9,21 +9,18 @@
 #include "../Shader/VAO.h"
 #include "../Shader/VBO.h"
 #include "../Shader/EBO.h"
-#include "../Texture/Texture.h"
 
-class Mesh
+class Light
 {
 public:
     Shader Shader;
     VAO VAO;
     VBO VBO;
     EBO EBO;
-    Texture Texture;
-    GLuint* Textures;
     
-    Mesh();
+    Light();
     void Render();
-    ~Mesh() = default;
+    ~Light() = default;
 };
 
 #endif

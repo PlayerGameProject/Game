@@ -10,9 +10,30 @@ World::World(GLFWwindow* window)
     int width, height;
     glfwGetWindowSize(window, &width, &height);
     
-    Block.emplace();
+    Mesh.emplace();
+    Light.emplace();
     Camera.emplace(window, width, height, glm::vec3(0.0f, 0.0f, 5.0f));
 
+    glm::vec4 LightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
+    glm::vec3 LightPosition = glm::vec3(2.5f, 2.5f, 2.5f);
+    glm::mat4 LightModel = glm::mat4(1.0f);
+    GLfloat LightIntensity = 1.5f;
+    LightModel = glm::translate(LightModel, LightPosition);
+    
+    glm::vec3 MeshPosition = glm::vec3(0.0f, 0.0f, 0.0f);
+    glm::mat4 MeshModel = glm::mat4(1.0f);
+    MeshModel = glm::translate(MeshModel, MeshPosition);
+
+    Light->Shader.Activate();
+    glUniformMatrix4fv(glGetUniformLocation(Light->Shader.programID, "Model"), 1, GL_FALSE, glm::value_ptr(LightModel));
+    glUniform4f(glGetUniformLocation(Light->Shader.programID, "Color"), LightColor.x, LightColor.y, LightColor.z, LightColor.w);
+    
+    Mesh->Shader.Activate();
+    glUniformMatrix4fv(glGetUniformLocation(Mesh->Shader.programID, "Model"), 1, GL_FALSE, glm::value_ptr(MeshModel));
+    glUniform4f(glGetUniformLocation(Mesh->Shader.programID, "LightColor"), LightColor.x, LightColor.y, LightColor.z, LightColor.w);
+    glUniform3f(glGetUniformLocation(Mesh->Shader.programID, "LightPosition"), LightPosition.x, LightPosition.y, LightPosition.z);
+    glUniform1f(glGetUniformLocation(Mesh->Shader.programID, "LightIntensity"), LightIntensity);
+    
     glEnable(GL_DEPTH_TEST);
 }
 
@@ -21,9 +42,13 @@ void World::Run(GLFWwindow* window)
     glClearColor(0.0f, 1.0f, 1.0f, 1.0f);
     glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    Block->Render();
-
     Camera->Input(window);
     Camera->Update(window, 70.0f, 0.01f, 1000.0f);
-    Camera->Matrix(Block->Shader, "CameraMatrix");
+
+    Mesh->Render();
+    glUniform3f(glGetUniformLocation(Mesh->Shader.programID, "CameraPosition"), Camera->Position.x, Camera->Position.y, Camera->Position.z);
+    Camera->Matrix(Mesh->Shader, "CameraMatrix");
+
+    Light->Render();
+    Camera->Matrix(Light->Shader, "CameraMatrix");
 }
