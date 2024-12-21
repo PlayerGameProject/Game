@@ -13,7 +13,7 @@
 
 int main()
 {
-    App Game(640, 480, "Game");
+    App Game(640, 480, "Game", nullptr, true);
     Game.Run();
     
     return EXIT_SUCCESS;
