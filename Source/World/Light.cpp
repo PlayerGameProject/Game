@@ -3,35 +3,35 @@
 GLfloat LightVertices[] =
 {
     // Positions
-    -0.25f,  0.25f,  0.25f,  // Front Face Top Left Vertex
-     0.25f,  0.25f,  0.25f,  // Front Face Top Right Vertex
-     0.25f, -0.25f,  0.25f,  // Front Face Bottom Right Vertex
-    -0.25f, -0.25f,  0.25f,  // Front Face Bottom Left Vertex
-	
-    -0.25f,  0.25f, -0.25f,  // Right Face Top Left Vertex
-    -0.25f,  0.25f,  0.25f,  // Right Face Top Right Vertex
-    -0.25f, -0.25f,  0.25f,  // Right Face Bottom Right Vertex
-    -0.25f, -0.25f, -0.25f,  // Right Face Bottom Left Vertex
-	
-     0.25f,  0.25f, -0.25f,  // Back Face Top Left Vertex
-    -0.25f,  0.25f, -0.25f,  // Back Face Top Right Vertex
-    -0.25f, -0.25f, -0.25f,  // Back Face Bottom Right Vertex
-     0.25f, -0.25f, -0.25f,  // Back Face Bottom Left Vertex
-	 
-     0.25f,  0.25f,  0.25f,  // Left Face Top Left Vertex
-     0.25f,  0.25f, -0.25f,  // Left Face Top Right Vertex
-     0.25f, -0.25f, -0.25f,  // Left Face Bottom Right Vertex
-     0.25f, -0.25f,  0.25f,  // Left Face Bottom Left Vertex
-	 
-    -0.25f,  0.25f, -0.25f,  // Top Face Top Left Vertex
-     0.25f,  0.25f, -0.25f,  // Top Face Top Right Vertex
-     0.25f,  0.25f,  0.25f,  // Top Face Bottom Right Vertex
-    -0.25f,  0.25f,  0.25f,  // Top Face Bottom Left Vertex
-	
-    -0.25f, -0.25f,  0.25f,  // Bottom Face top Left Vertex
-     0.25f, -0.25f,  0.25f,  // Bottom Face top Right Vertex
-     0.25f, -0.25f, -0.25f,  // Bottom Face Bottom Right Vertex
-    -0.25f, -0.25f, -0.25f   // Bottom Face Bottom Left Vertex
+    -1.0f,  1.0f,  1.0f,  // Front Face Top Left Vertex
+     1.0f,  1.0f,  1.0f,  // Front Face Top Right Vertex
+     1.0f, -1.0f,  1.0f,  // Front Face Bottom Right Vertex
+    -1.0f, -1.0f,  1.0f,  // Front Face Bottom Left Vertex
+
+    -1.0f,  1.0f, -1.0f,  // Right Face Top Left Vertex
+    -1.0f,  1.0f,  1.0f,  // Right Face Top Right Vertex
+    -1.0f, -1.0f,  1.0f,  // Right Face Bottom Right Vertex
+    -1.0f, -1.0f, -1.0f,  // Right Face Bottom Left Vertex
+
+     1.0f,  1.0f, -1.0f,  // Back Face Top Left Vertex
+    -1.0f,  1.0f, -1.0f,  // Back Face Top Right Vertex
+    -1.0f, -1.0f, -1.0f,  // Back Face Bottom Right Vertex
+     1.0f, -1.0f, -1.0f,  // Back Face Bottom Left Vertex
+
+     1.0f,  1.0f,  1.0f,  // Left Face Top Left Vertex
+     1.0f,  1.0f, -1.0f,  // Left Face Top Right Vertex
+     1.0f, -1.0f, -1.0f,  // Left Face Bottom Right Vertex
+
+     1.0f, -1.0f,  1.0f,  // Left Face Bottom Left Vertex
+    -1.0f,  1.0f, -1.0f,  // Top Face Top Left Vertex
+     1.0f,  1.0f, -1.0f,  // Top Face Top Right Vertex
+     1.0f,  1.0f,  1.0f,  // Top Face Bottom Right Vertex
+    -1.0f,  1.0f,  1.0f,  // Top Face Bottom Left Vertex
+
+    -1.0f, -1.0f,  1.0f,  // Bottom Face top Left Vertex
+     1.0f, -1.0f,  1.0f,  // Bottom Face top Right Vertex
+     1.0f, -1.0f, -1.0f,  // Bottom Face Bottom Right Vertex
+    -1.0f, -1.0f, -1.0f   // Bottom Face Bottom Left Vertex
 };
 
 GLuint LightIndices[] =

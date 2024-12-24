@@ -17,12 +17,15 @@ World::World(GLFWwindow* window)
     glm::vec4 LightColor = glm::vec4(1.0f, 1.0f, 1.0f, 1.0f);
     glm::vec3 LightPosition = glm::vec3(2.5f, 2.5f, 2.5f);
     glm::mat4 LightModel = glm::mat4(1.0f);
-    GLfloat LightIntensity = 1.5f;
+    GLfloat LightIntensity = 2.0f;
     LightModel = glm::translate(LightModel, LightPosition);
+    LightModel = glm::scale(LightModel, glm::vec3(0.25f));
     
     glm::vec3 MeshPosition = glm::vec3(0.0f, 0.0f, 0.0f);
     glm::mat4 MeshModel = glm::mat4(1.0f);
     MeshModel = glm::translate(MeshModel, MeshPosition);
+    MeshModel = glm::scale(MeshModel, glm::vec3(1.0f));
+    MeshModel = glm::rotate(MeshModel, glm::radians(0.0f), glm::vec3(0.0f, 1.0f, 0.0f));
 
     Light->Shader.Activate();
     glUniformMatrix4fv(glGetUniformLocation(Light->Shader.programID, "Model"), 1, GL_FALSE, glm::value_ptr(LightModel));
